@@ -1,0 +1,64 @@
+<div class="min-h-screen flex flex-col items-center justify-center py-8 space-y-8">
+  <div class="w-full max-w-5xl space-y-8">
+
+    <!-- Card for Shortened Link -->
+    <div class="bg-white p-8 rounded-lg shadow-lg text-center">
+      <h1 class="text-4xl mb-2">Your link has been shortened!</h1>
+      <%= link_to "Shorten another link", root_path, class: "text-blue-600 hover:underline mt-4 block" %>
+
+      <div class="flex justify-between items-start mt-8">
+        <div class="flex-grow">
+          <h2 class="text-xl font-bold mb-1">Short Link</h2>
+          <%= link_to "#{request.protocol}#{request.host_with_port}/#{@url.short_url}", 
+                      "/#{@url.short_url}", 
+                      data: { turbo: false }, 
+                      target: "_blank",
+                      class: "break-all text-blue-600 hover:underline" %>
+        </div>
+        <div class="flex-grow">
+          <h2 class="text-xl font-bold mb-1">Target Link</h2>
+          <%= link_to @url.target_url, 
+                      @url.target_url, 
+                      target: "_blank",
+                      class: "break-all text-blue-600 hover:underline" %>
+        </div>
+        <div class="flex-grow">
+          <h2 class="text-xl font-bold mb-1">Title Tag</h2>
+          <span><%= @url.title_tag %></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card for Usage Report -->
+    <div class="bg-white p-8 rounded-lg shadow-lg text-center">
+      <h1 class="text-4xl mb-2">Usage Report</h1>
+      <div class="my-10">
+        <h2 class="text-lg">Click Rate</h2>
+        <p class="text-3xl font-bold mb-1"><%= @url.clicks %></p>
+      </div>
+
+      <% if @url.visits.any? %>
+        <h2 class="text-xl font-bold mb-1">Your Link Visits</h2>
+        <table class="border border-gray-400 border-collapse w-full text-center">
+          <thead class="bg-gray-200">
+            <tr>
+              <th class="py-2 px-4">Originating Geolocation</th>
+              <th class="py-2 px-4">Timestamp</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @url.visits.order(created_at: :desc).each do |visit| %>
+              <tr>
+                <td class="py-2 px-4"><%= visit.originating_geolocation %></td>
+                <td class="py-2 px-4"><%= visit.created_at.in_time_zone('Asia/Kuala_Lumpur') %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% else %>
+        <h2 class="text-xl mb-1 text-center">This short link has not been visited.</h2>
+      <% end %>
+    </div>
+
+  </div>
+</div>
