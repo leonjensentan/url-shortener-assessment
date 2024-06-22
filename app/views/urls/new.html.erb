@@ -1,21 +1,25 @@
 <div class="min-h-screen flex flex-col items-center justify-center bg-gray space-y-8">
+  <!--Pun Line hehe-->
   <h1 class="text-3xl text-center">Why did the URL visit the barber? To get a fresh, short cut!</h1>
    <div class="bg-white p-16 rounded-lg shadow-lg">
     <h1 class="text-5xl mb-8 text-center">Shorten your URL here</h1>
 
+    <!-- Form to submit the URL to be shortened -->
     <%= form_with model: @url, local: true do |form| %>
       <div class="flex items-center space-x-2">
         <%= form.text_field :target_url, placeholder: "Enter URL", class: "border rounded-l px-4 py-4 w-full text-gray-700 focus:outline-none focus:ring-2 focus:ring-green-300" %>
         <%= form.submit 'Shorten', class: "bg-green-500 text-white px-4 py-4 rounded-r hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300" %>
       </div>
+
+      <!-- Display validation errors if any -->
       <% if @url.errors.full_messages.any? %>
         <% @url.errors.full_messages.each do |error_message| %>
             <% if @url.errors.full_messages.first == error_message %>
                 <p class="text-left mt-1  text-red-500">
-                    <i class="fa-solid fa-triangle-exclamation px-2"></i><%= error_message %>
+                    <%= error_message %>
                 </p>
             <% end %>
-          <% end %>
+          <% end %> 
       <% end %>
     <% end %>
   </div>
