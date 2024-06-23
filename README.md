@@ -43,11 +43,13 @@ You can access the deployed application at [https://url-shortener-assessment-2a1
    Open your browser and go to http://localhost:3000
 
 ## Dependencies and Other Relevant Information
-PostgreSQL : RDBMS for the web application
-Geocoder : IP address geocoding
-Nokogiri : DOM Parser for HTML
-FactoryBot : For Test Data
-TailWind CSS : CSS framework for rapid UI development
+<ul>
+<li>PostgreSQL : RDBMS for the web application</li>
+<li>Geocoder : IP address geocoding</li>
+<li>Nokogiri : DOM Parser for HTML</li>
+<li>FactoryBot : For Test Data</li>
+<li>TailWind CSS : CSS framework for rapid UI development</li>
+</ul>
 
 ## Tests
 To run the tests, use the following command:
