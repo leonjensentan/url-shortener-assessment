@@ -42,14 +42,14 @@ You can access the deployed application at [https://url-shortener-assessment-2a1
 5. **Visit the Application**
    Open your browser and go to http://localhost:3000
 
-#### Dependencies and Other Relevant Information
+## Dependencies and Other Relevant Information
 PostgreSQL : RDBMS for the web application
 Geocoder : IP address geocoding
 Nokogiri : DOM Parser for HTML
 FactoryBot : For Test Data
 TailWind CSS : CSS framework for rapid UI development
 
-##### Tests
+## Tests
 To run the tests, use the following command:
    ```sh
    bundle exec rspec
